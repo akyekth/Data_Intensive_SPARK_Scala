@@ -21,3 +21,4 @@ hadoop jar topten.jar sics.TopTen input output
 ```
 hdfs dfs -cat output/part-r-00000
 ```
+
