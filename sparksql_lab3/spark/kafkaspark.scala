@@ -30,10 +30,10 @@ object KafkaWordCount {
 
 // pairs=([letter:String , number:double],1)
     
-    val pairs =values.flatMap{ _.split(" ") }.map (i => { val s=i. split(",")
-                                                                                                                  (s(0),s(1).toInt)
-                                                                                                      
-                                                                                                              })
+    val pairs =values.flatMap{ _.split(" ") }.map (i => { val s=i. split(",") 
+							(s(0),s(1).toInt)                                                                                 
+                                                         }
+						  )
 
 	
         
@@ -47,12 +47,12 @@ def mappingFun(key: String, value: Option[Int], state: State[(Double,Long)] )  :
                                            
                        val output = (key, sum/n)
                        state.update((sum,n))
-                     Some(output)
+                       Some(output)
     }
     
 	
-        val stateSpec = StateSpec.function(mappingFun _)
-	val stateDstream = pairs.mapWithState(stateSpec)
+    val stateSpec = StateSpec.function(mappingFun _)
+    val stateDstream = pairs.mapWithState(stateSpec)
     println(" this is the output  ..........")
     stateDstream.print()
     ssc.start()
